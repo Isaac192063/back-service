@@ -26,13 +26,13 @@ SELECT * FROM MODELS;
 INSERT INTO MODELS(id, name) 
 VALUES (default, 'renault'), (default, 'audy');
 ```
-3. crear archivo .env en la riaz. Con esta varible local
+3. editar url del archivo src/services/pgConection.service.js con las configuraciones de la base de datos
 ```bash
-DATABASE_URL="postgresql://USUARIO:PASSWORD@localhost:PORT/DB_NAME"
+pgp("postgresql://USUARIO:PASSWORD@localhost:PORT/DB_NAME")
 ```
 Ejemplo:
 ```bash
-DATABASE_URL="postgres://postgres:admin@localhost:5432/asa"
+pgp("postgres://postgres:ADMIN@localhost:5433/asa")
 
 ```
 4. configurar puerto en .env
