@@ -1,12 +1,15 @@
 import carroModel from '../models/carro.model.js'
 
-export function getAllCar(req, res) {
+export async function getAllCar(req, res) {
 
-    const asa = carroModel.getAllCar()
+    const asa = await carroModel.getAllCar()
+    const modelos = await carroModel.getAllModels()
 
     res.status(200).json({
         sucess: true,
-        messae: "Get all car"
+        messae: "Get all car",
+        data: asa,
+        modelos
     })
 }
 export function postCar(req, res) {
