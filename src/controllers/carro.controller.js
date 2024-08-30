@@ -3,27 +3,66 @@ import carroModel from '../models/carro.model.js'
 export async function getAllCar(req, res) {
 
     const asa = await carroModel.getAllCar()
-    const modelos = await carroModel.getAllModels()
 
     res.status(200).json({
         sucess: true,
-        messae: "Get all car",
         data: asa,
-        modelos
     })
 }
-export function postCar(req, res) {
+export  async function postCar(req, res) {
 
-    const asa = carroModel.saveCar()
+    const {nombre, anyo, empresa} = req.body;
+
+    const data = await carroModel.saveCar(nombre, anyo, empresa);
+
+    res.status(200).json({
+        sucess: true,
+        data
+    })
+}
+export  async function putCar(req, res) {
+
+    const {id} = req.params;
+    const {nombre, anyo, empresa} = req.body;
+
+    const asa = await carroModel.updateCar(id, nombre, anyo, empresa );
+
+    res.status(200).json({
+        sucess: true,
+        data: asa
+    })
+}
+export  async function deleteCar(req, res) {
+
+    const {id} = req.params;
+
+    const asa = await carroModel.deleteCar(id );
+
+    res.status(200).json({
+        sucess: true,
+        data: asa
+    })
+}
+
+
+
+
+export async function getCarUnique(req, res){
+
+    const {idCarro} = req.params
+    const data = await carroModel.getCarUnique(idCarro);
 
 
     res.status(200).json({
         sucess: true,
-        messae: "Get all car"
+         data
     })
 }
 
 export default {
     getAllCar,
-    postCar
+    postCar,
+    getCarUnique, 
+    putCar,
+    deleteCar
 }

@@ -1,18 +1,14 @@
-CREATE TABLE CARROS(
-id serial primary key,
-	nombre varchar(40) 
+CREATE TABLE CARRO(
+	id serial primary key,
+	nombre varchar(40),
+	anyo varchar(10),
+	empresa varchar(30)
 );
 
-select * from CARROS
+INSERT INTO CARRO (id, nombre, anyo, empresa) 
+VALUES 
+(default, 'Mustang', '2022', 'Ford'),
+(default, 'Civic', '2020', 'Honda'),
+(default, 'Model S', '2023', 'Tesla');
 
-INSERT INTO CARROS (id, nombre) VALUES (default, 'renault');
-
-CREATE TABLE MODELS(
-id serial primary key,
-name varchar(100) not null
-);
-
-SELECT * FROM MODELS;
-
-INSERT INTO MODELS(id, name) 
-VALUES (default, 'renault'), (default, 'audy');
+select * from CARRO;

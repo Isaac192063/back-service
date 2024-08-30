@@ -1,5 +1,6 @@
 import express from "express";
 import server from '../config/default.js'
+import ValidateRoutes from "../middlewares/index.middleware.js";
 import indexRouter from "../routes/index.router.js";
 import PgConection from "../services/pgConection.service.js";
 
@@ -14,6 +15,8 @@ export default class Server {
     }
 
     middlewares() {
+        this.app.use(express.json())
+        this.app.use(ValidateRoutes)
     }
 
 

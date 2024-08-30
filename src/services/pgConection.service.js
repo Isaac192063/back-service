@@ -1,5 +1,7 @@
 import pgPromise from "pg-promise";
 
+import environment from '../config/default.js'
+
 export default class PgConection {
 
     static instance;
@@ -10,7 +12,7 @@ export default class PgConection {
         }
         PgConection.instance = this;
         const pgp = pgPromise({})
-        this.connection = pgp("postgres://postgres:admin@localhost:5432/asa")
+        this.connection = pgp(environment.db_URl)
         this.connection.connect()
             .then(obj => {
                 console.log("Me conecte " + obj.client.serverVersion);

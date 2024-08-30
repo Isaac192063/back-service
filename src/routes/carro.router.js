@@ -5,8 +5,9 @@ const carroRouter = Router()
 
 
 carroRouter.get("/carro", carroController.getAllCar)
+carroRouter.get("/carro/:idCarro", carroController.getCarUnique)
 carroRouter.post("/carro", carroController.postCar)
-carroRouter.delete("/carro")
-carroRouter.put("/carro")
+carroRouter.delete("/carro/:id", carroController.deleteCar)
+carroRouter.put("/carro/:id", carroController.putCar)
 
 export default carroRouter;
