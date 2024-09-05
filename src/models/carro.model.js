@@ -9,7 +9,7 @@ const getAllCar = async () => {
         FROM 
             CARRO 
         ORDER BY 
-            id ASC;
+            id_carro ASC;
         `
     )
 }
@@ -42,13 +42,14 @@ const getCarUnique = async (id) => {
             SELECT 
                 * 
             FROM 
-                CARRO 
+                CARRO
             WHERE 
-                id = $1
+                id_carro = $1
             `
             , 
             [id])
     } catch (error) {
+        console.log(error);
         return [];
     }
 }
@@ -65,7 +66,7 @@ const updateCar = async (id, nombre, anyo, empresa) => {
                 anyo= $[anio], 
                 empresa= $[empr] 
             WHERE 
-                id= $[id] 
+                id_carro= $[id] 
             RETURNING *;
             `,
             {
@@ -88,7 +89,7 @@ const deleteCar = async (id) => {
             DELETE FROM 
                 carro 
             WHERE 
-                id = $1 
+                id_carro = $1 
             RETURNING *
             `
             , 

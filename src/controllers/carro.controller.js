@@ -52,7 +52,6 @@ export async function getCarUnique(req, res){
     const {idCarro} = req.params
     const data = await carroModel.getCarUnique(idCarro);
 
-
     res.status(200).json({
         sucess: true,
          data
